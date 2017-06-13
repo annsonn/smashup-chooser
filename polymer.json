@@ -1,0 +1,22 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/smashup-chooser-app.html",
+  "fragments": [
+    "src/app-settings.html",
+    "src/race-chooser.html",
+    "src/score-counter.html",
+    "src/view-404.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  }
+}
