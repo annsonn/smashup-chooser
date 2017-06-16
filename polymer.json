@@ -3,7 +3,7 @@
   "shell": "src/smashup-chooser-app.html",
   "fragments": [
     "src/app-settings.html",
-    "src/race-chooser.html",
+    "src/faction-chooser.html",
     "src/score-counter.html",
     "src/view-404.html"
   ],

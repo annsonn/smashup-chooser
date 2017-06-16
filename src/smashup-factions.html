@@ -19,89 +19,88 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get is() { return 'smashup-factions'; }
       static get properties() {
         return {
-          selectedRaces: Array
+          selectedFactions: Array
         };
       }
 
       ready() {
         super.ready();
         smashup = smashup || {};
-        smashup.races = smashup.races || this._loadAllRaces();
-        smashup.selectedRaces = smashup.selectedRaces || this._loadDefaultRaces();
+        smashup.factions = smashup.factions || this._loadAllFactions();
+        smashup.availableFactions = smashup.availableFactions || this._loadAllFactions()
+        smashup.selectedFactions = smashup.selectedFactions || this._loadDefaultFactions();
       }
 
-      _loadAllRaces() {
-        var races = [];
+      _loadAllFactions() {
+        var factions = [];
 
-        races.push({faction: 'Aliens', image: 'images/aliens.jpg', set: 'core'});
-        races.push({faction: 'Dinoscaurs', image: 'images/dinosaurs.jpg', set: 'core'});
-        races.push({faction: 'Ninjas', image: 'images/ninjas.jpg', set: 'core'});
-        races.push({faction: 'Pirates', image: 'images/pirates.jpg', set: 'core'});
-        races.push({faction: 'Robots', image: 'images/robots.jpg', set: 'core'});
-        races.push({faction: 'Tricksters', image: 'images/tricksters.jpg', set: 'core'});
-        races.push({faction: 'Wizards', image: 'images/wizards.jpg', set: 'core'});
-        races.push({faction: 'Zombies', image: 'images/zombies.jpg', set: 'core'});
+        factions.push({faction: 'Aliens', image: 'images/aliens.jpg', set: 'core'});
+        factions.push({faction: 'Dinoscaurs', image: 'images/dinosaurs.jpg', set: 'core'});
+        factions.push({faction: 'Ninjas', image: 'images/ninjas.jpg', set: 'core'});
+        factions.push({faction: 'Pirates', image: 'images/pirates.jpg', set: 'core'});
+        factions.push({faction: 'Robots', image: 'images/robots.jpg', set: 'core'});
+        factions.push({faction: 'Tricksters', image: 'images/tricksters.jpg', set: 'core'});
+        factions.push({faction: 'Wizards', image: 'images/wizards.jpg', set: 'core'});
+        factions.push({faction: 'Zombies', image: 'images/zombies.jpg', set: 'core'});
 
-        races.push({faction: 'Bear Cavalry', image: 'images/bear-cavalry.jpg', set: 'awesome-level-9000'});
-        races.push({faction: 'Ghosts', image: 'images/ghosts.jpg', set: 'awesome-level-9000'});
-        races.push({faction: 'Killer Plans', image: 'images/killer-plants.jpg', set: 'awesome-level-9000'});
-        races.push({faction: 'Steampunks', image: 'images/steampunks.jpg', set: 'awesome-level-9000'});
+        factions.push({faction: 'Bear Cavalry', image: 'images/bear-cavalry.jpg', set: 'awesome-level-9000'});
+        factions.push({faction: 'Ghosts', image: 'images/ghosts.jpg', set: 'awesome-level-9000'});
+        factions.push({faction: 'Killer Plans', image: 'images/killer-plants.jpg', set: 'awesome-level-9000'});
+        factions.push({faction: 'Steampunks', image: 'images/steampunks.jpg', set: 'awesome-level-9000'});
 
-        races.push({faction: 'Elder Things', image: 'images/elder-things.jpg', set: 'obligatory-cthulhu'});
-        races.push({faction: 'Innsmouth', image: 'images/innsmouth.jpg', set: 'obligatory-cthulhu'});
-        races.push({faction: 'Minions of Cthulhu', image: 'images/minions-of-cthulhu.jpg', set: 'obligatory-cthulhu'});
-        races.push({faction: 'Miskatonic University', image: 'images/miskatonic-university.jpg', set: 'obligatory-cthulhu'});
+        factions.push({faction: 'Elder Things', image: 'images/elder-things.jpg', set: 'obligatory-cthulhu'});
+        factions.push({faction: 'Innsmouth', image: 'images/innsmouth.jpg', set: 'obligatory-cthulhu'});
+        factions.push({faction: 'Minions of Cthulhu', image: 'images/minions-of-cthulhu.jpg', set: 'obligatory-cthulhu'});
+        factions.push({faction: 'Miskatonic University', image: 'images/miskatonic-university.jpg', set: 'obligatory-cthulhu'});
 
-        races.push({faction: 'Cyborg Apes', image: 'images/cyborg-apes.jpg', set: 'science-fiction-double'});
-        races.push({faction: 'Shapeshifters', image: 'images/shapeshifters.jpg', set: 'science-fiction-double'});
-        races.push({faction: 'Super Spies', image: 'images/super-spies.jpg', set: 'science-fiction-double'});
-        races.push({faction: 'Time Travelers', image: 'images/time-travelers.jpg', set: 'science-fiction-double'});
+        factions.push({faction: 'Cyborg Apes', image: 'images/cyborg-apes.jpg', set: 'science-fiction-double'});
+        factions.push({faction: 'Shapeshifters', image: 'images/shapeshifters.jpg', set: 'science-fiction-double'});
+        factions.push({faction: 'Super Spies', image: 'images/super-spies.jpg', set: 'science-fiction-double'});
+        factions.push({faction: 'Time Travelers', image: 'images/time-travelers.jpg', set: 'science-fiction-double'});
         
-        races.push({faction: 'Geeks', image: 'images/geeks.jpg', set: 'big-geeky-box'});
+        factions.push({faction: 'Geeks', image: 'images/geeks.jpg', set: 'big-geeky-box'});
 
-        races.push({faction: 'Giant Ants', image: 'images/giant-ants.jpg', set: 'monster'});
-        races.push({faction: 'Mad Scientists', image: 'images/mad-scientists.jpg', set: 'monster'});
-        races.push({faction: 'Vampires', image: 'images/vampires.jpg', set: 'monster'});
-        races.push({faction: 'Werewolves', image: 'images/werewolves.jpg', set: 'monster'});
+        factions.push({faction: 'Giant Ants', image: 'images/giant-ants.jpg', set: 'monster'});
+        factions.push({faction: 'Mad Scientists', image: 'images/mad-scientists.jpg', set: 'monster'});
+        factions.push({faction: 'Vampires', image: 'images/vampires.jpg', set: 'monster'});
+        factions.push({faction: 'Werewolves', image: 'images/werewolves.jpg', set: 'monster'});
         
-        races.push({faction: 'Fairies', image: 'images/fairies.jpg', set: 'pretty-pretty'});
-        races.push({faction: 'Kitty Cats', image: 'images/kitty-cats.jpg', set: 'pretty-pretty'});
-        races.push({faction: 'Mythic Horses', image: 'images/mythic-horses.jpg', set: 'pretty-pretty'});
-        races.push({faction: 'Princesses', image: 'images/Princesses.jpg', set: 'pretty-pretty'});
+        factions.push({faction: 'Fairies', image: 'images/fairies.jpg', set: 'pretty-pretty'});
+        factions.push({faction: 'Kitty Cats', image: 'images/kitty-cats.jpg', set: 'pretty-pretty'});
+        factions.push({faction: 'Mythic Horses', image: 'images/mythic-horses.jpg', set: 'pretty-pretty'});
+        factions.push({faction: 'Princesses', image: 'images/Princesses.jpg', set: 'pretty-pretty'});
         
-        races.push({faction: 'Clerics', image: 'images/clerics.jpg', set: 'munchkin'});
-        races.push({faction: 'Dwarves', image: 'images/dwarves.jpg', set: 'munchkin'});
-        races.push({faction: 'Elves', image: 'images/elves.jpg', set: 'munchkin'});
-        races.push({faction: 'Halflings', image: 'images/halflings.jpg', set: 'munchkin'});
-        races.push({faction: 'Mages', image: 'images/mages.jpg', set: 'munchkin'});
-        races.push({faction: 'Orcs', image: 'images/orcs.jpg', set: 'munchkin'});
-        races.push({faction: 'Thieves', image: 'images/thieves.jpg', set: 'munchkin'});
-        races.push({faction: 'Warriors', image: 'images/warriors.jpg', set: 'munchkin'});
+        factions.push({faction: 'Clerics', image: 'images/clerics.jpg', set: 'munchkin'});
+        factions.push({faction: 'Dwarves', image: 'images/dwarves.jpg', set: 'munchkin'});
+        factions.push({faction: 'Elves', image: 'images/elves.jpg', set: 'munchkin'});
+        factions.push({faction: 'Halflings', image: 'images/halflings.jpg', set: 'munchkin'});
+        factions.push({faction: 'Mages', image: 'images/mages.jpg', set: 'munchkin'});
+        factions.push({faction: 'Orcs', image: 'images/orcs.jpg', set: 'munchkin'});
+        factions.push({faction: 'Thieves', image: 'images/thieves.jpg', set: 'munchkin'});
+        factions.push({faction: 'Warriors', image: 'images/warriors.jpg', set: 'munchkin'});
 
-        races.push({faction: 'Dragons', image: 'images/dragons.jpg', set: 'its-your-fault'});
-        races.push({faction: 'Mythic Greeks', image: 'images/mythic-greeks.jpg', set: 'its-your-fault'});
-        races.push({faction: 'Sharks', image: 'images/sharks.jpg', set: 'its-your-fault'});
-        races.push({faction: 'Superheroes', image: 'images/superheroes.jpg', set: 'its-your-fault'});
-        races.push({faction: 'Tornados', image: 'images/tornados.jpg', set: 'its-your-fault'});
+        factions.push({faction: 'Dragons', image: 'images/dragons.jpg', set: 'its-your-fault'});
+        factions.push({faction: 'Mythic Greeks', image: 'images/mythic-greeks.jpg', set: 'its-your-fault'});
+        factions.push({faction: 'Sharks', image: 'images/sharks.jpg', set: 'its-your-fault'});
+        factions.push({faction: 'Superheroes', image: 'images/superheroes.jpg', set: 'its-your-fault'});
+        factions.push({faction: 'Tornados', image: 'images/tornados.jpg', set: 'its-your-fault'});
 
-        races.push({faction: 'Astroknights', image: 'images/astroknights.jpg', set: 'cease-and-desist'});
-        races.push({faction: 'Changerbots', image: 'images/changerbots.jpg', set: 'cease-and-desist'});
-        races.push({faction: 'Ignobles', image: 'images/ignobles.jpg', set: 'cease-and-desist'});
-        races.push({faction: 'Star Roamers', image: 'images/star-roamers.jpg', set: 'cease-and-desist'});
+        factions.push({faction: 'Astroknights', image: 'images/astroknights.jpg', set: 'cease-and-desist'});
+        factions.push({faction: 'Changerbots', image: 'images/changerbots.jpg', set: 'cease-and-desist'});
+        factions.push({faction: 'Ignobles', image: 'images/ignobles.jpg', set: 'cease-and-desist'});
+        factions.push({faction: 'Star Roamers', image: 'images/star-roamers.jpg', set: 'cease-and-desist'});
 
-        races.push({faction: 'Explorers', image: 'images/explorers.jpg', set: 'what-were-we-thinking'});
-        races.push({faction: 'Grannies', image: 'images/grannies.jpg', set: 'what-were-we-thinking'});
-        races.push({faction: 'Rock Stars', image: 'images/rock-stars.jpg', set: 'what-were-we-thinking'});
-        races.push({faction: 'Teddy Bears', image: 'images/teddy-bears.jpg', set: 'what-were-we-thinking'});
+        factions.push({faction: 'Explorers', image: 'images/explorers.jpg', set: 'what-were-we-thinking'});
+        factions.push({faction: 'Grannies', image: 'images/grannies.jpg', set: 'what-were-we-thinking'});
+        factions.push({faction: 'Rock Stars', image: 'images/rock-stars.jpg', set: 'what-were-we-thinking'});
+        factions.push({faction: 'Teddy Bears', image: 'images/teddy-bears.jpg', set: 'what-were-we-thinking'});
 
 
-        return races;
+        return factions;
       }
 
-      _loadDefaultRaces() {
-        var races = [];
-
-        return races;
+      _loadDefaultFactions() {
+        return Object.assign({}, smashup.factions);;
       }
     }
 
