@@ -17,18 +17,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class SmashupFactions extends Polymer.Element {
       static get is() { return 'smashup-factions'; }
-      static get properties() {
-        return {
-          selectedFactions: Array
-        };
-      }
 
       ready() {
         super.ready();
-        smashup = smashup || {};
-        smashup.factions = smashup.factions || this._loadAllFactions();
-        smashup.availableFactions = smashup.availableFactions || this._loadAllFactions()
-        smashup.selectedFactions = smashup.selectedFactions || this._loadDefaultFactions();
+        this.smashup = {};
+        this.smashup.factions = this.smashup.factions || this._loadAllFactions();
+        this.smashup.availableFactions = this.smashup.availableFactions || this._loadAllFactions()
+        this.smashup.selectedFactions = this.smashup.selectedFactions || this._loadDefaultFactions();
       }
 
       _loadAllFactions() {
@@ -100,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _loadDefaultFactions() {
-        return Object.assign({}, smashup.factions);;
+        return Object.assign([], this.smashup.factions);;
       }
     }
 

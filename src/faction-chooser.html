@@ -24,14 +24,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="card">
       <div class="circle">1</div>
       <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <template is="dom-repeat" items="{{factions}}">
+          <span>[[item.faction]]</span>
+      </template>
     </div>
   </template>
 
   <script>
     class FactionChooser extends Polymer.Element {
       static get is() { return 'faction-chooser'; }
+
+      static get properties() {
+        return {
+          factions: {
+            type: Array,
+            observer: '_factionsChanged',
+          }
+        };
+      } 
+
+      _factionsChanged(newValue) {
+        console.log('newValue', newValue);
+      }
+
     }
 
     window.customElements.define(FactionChooser.is, FactionChooser);

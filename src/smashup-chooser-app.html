@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <smashup-factions></smashup-factions>
+    <smashup-factions id="factions"></smashup-factions>
 
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -105,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <faction-chooser name="faction-chooser"></faction-chooser>
+          <faction-chooser factions="[[smashup.selectedFactions]]" name="faction-chooser"></faction-chooser>
           <score-counter name="score-counter"></score-counter>
           <app-settings name="app-settings"></app-settings>
           <view-404 name="view-404"></view-404>
@@ -129,6 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           rootPattern: String,
           routeData: Object,
           subroute: String,
+          smashup: Array
         };
       }
 
@@ -136,6 +137,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return [
           '_routePageChanged(routeData.page)',
         ];
+      }
+
+      ready() {
+        super.ready();
+        this.smashup = this.$.factions.smashup;
       }
 
       constructor() {
