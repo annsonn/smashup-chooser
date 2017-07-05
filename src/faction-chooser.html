@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="faction-chooser">
@@ -19,14 +21,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+
+      .players {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .player {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 200px;
+      }
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <template is="dom-repeat" items="{{factions}}">
-          <span>[[item.faction]]</span>
-      </template>
+      <paper-input type="number" value="{{defaultNumPlayers}}" id="numPlayers" min="2" max="4"></paper-input>
+      <paper-button id="chooseFactionsButton" on-click="chooseFactions" disabled>Go!</paper-button>
+
+      <div class="players">
+        <template is="dom-repeat" items="{{players}}">
+          <div class="player">
+            <label>{{item.id}}</label>
+            <label>{{item.faction1.name}}</label>
+            <label>{{item.faction2.name}}</label>
+          </div>
+        </template>
+      </div>
+    
     </div>
   </template>
 
@@ -39,14 +61,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           factions: {
             type: Array,
             observer: '_factionsChanged',
+          },
+          defaultNumPlayers: {
+            type: Number,
+            value: 2
+          }, 
+          players: {
+            type: Object
           }
         };
       } 
 
-      _factionsChanged(newValue) {
-        console.log('newValue', newValue);
+      chooseFactions() {
+        this._resetFactionsList();
+        this.players = [];
+        for(var i = 1; i <= this.$.numPlayers.value; i++) {
+          this.players.push({
+            'id': 'player-' + i,
+            'faction1': this._getRandomFaction(),
+            'faction2': this._getRandomFaction()
+          });
+        };
       }
 
+      _resetFactionsList() {
+        this.availableFactions = Object.assign([], this.factions);
+        this._shuffle(this.availableFactions);
+      }
+      
+      _getRandomFaction() {
+        return this.availableFactions.pop();
+      }
+
+      _factionsChanged(newValue) {
+        this.$.chooseFactionsButton.disabled = false;
+      }
+
+      _shuffle(factions) {
+        for (let i = factions.length; i; i--) {
+          let j = Math.floor(Math.random() * i);
+          [factions[i - 1], factions[j]] = [factions[j], factions[i - 1]];
+        }
+      }
     }
 
     window.customElements.define(FactionChooser.is, FactionChooser);
