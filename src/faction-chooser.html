@@ -12,19 +12,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="faction-styles.html">
 
 <dom-module id="faction-chooser">
   <template>
-    <style include="shared-styles">
+    <style include="shared-styles faction-styles">
       :host {
-        display: block;
+        --paper-font-subhead_-_font-size: 1em;
 
-        padding: 10px;
+        display: block;
+        padding: 10px;    
+      }
+
+      .player-number {
+        text-align: center;
+        border-bottom: 2px solid black;
+        margin: 5px 0;
       }
 
       .players {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
       }
 
       .player {
@@ -33,22 +42,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         flex: 1;
         min-height: 200px;
       }
+
+      .faction {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .faction-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        font-weight: bold;
+        text-shadow: 2px 2px 2px black;
+      }
+
+      #numPlayers {
+        font-size: 400px;
+        line-height: 1;
+        text-align: center;
+      }
+
+      #chooseFactionsButton {
+        display: flex;
+        font-size: 40px;
+      }
+      
+      label {
+        text-align: center;
+      }
+
+      img {
+        width: auto;
+        height: 100px;
+      }
     </style>
 
     <div class="card">
       <paper-input type="number" value="{{defaultNumPlayers}}" id="numPlayers" min="2" max="4"></paper-input>
-      <paper-button id="chooseFactionsButton" on-click="chooseFactions" disabled>Go!</paper-button>
+      <paper-button class="indigo" id="chooseFactionsButton" on-click="chooseFactions" disabled>Go!</paper-button>    
+    </div>
 
-      <div class="players">
-        <template is="dom-repeat" items="{{players}}">
-          <div class="player">
-            <label>{{item.id}}</label>
-            <label>{{item.faction1.name}}</label>
-            <label>{{item.faction2.name}}</label>
-          </div>
-        </template>
-      </div>
     
+    <div class="players">
+      <template is="dom-repeat" items="{{players}}">
+        <div class="player card">
+          <h2 class="player-number">Player {{item.id}}</h2>
+          <div class="faction" faction$="{{item.faction1.image}}">
+            <img src="{{item.faction1.imageUrl}}">
+            <div class="faction-name" >
+              <label>{{item.faction1.name}}</label>
+            </div>              
+          </div>
+          <div class="faction" faction$="{{item.faction2.image}}">                   
+            <div class="faction-name">                
+              <label>{{item.faction2.name}}</label>
+            </div>
+            <img src="{{item.faction2.imageUrl}}">
+          </div>            
+        </div>
+      </template>
     </div>
   </template>
 
@@ -76,11 +129,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._resetFactionsList();
         this.players = [];
         for(var i = 1; i <= this.$.numPlayers.value; i++) {
-          this.players.push({
-            'id': 'player-' + i,
+          var player = {
+            'id': i,
             'faction1': this._getRandomFaction(),
             'faction2': this._getRandomFaction()
-          });
+          };
+          player.faction1.imageUrl = this.resolveUrl('../images/races/' + player.faction1.image + '.png');
+          player.faction2.imageUrl = this.resolveUrl('../images/races/' + player.faction2.image + '.png');
+
+          this.players.push(player);
         };
       }
 
