@@ -76,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: auto;
         height: 100px;
       }
+
+      paper-button.indigo:disabled {
+        background-color: grey;
+      }
     </style>
 
     <div class="card">
@@ -151,6 +155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _factionsChanged(newValue) {
+        console.log('_factionsChanged');
         this.$.chooseFactionsButton.disabled = false;
       }
 

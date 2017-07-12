@@ -20,75 +20,74 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready() {
         super.ready();
+        // TODO: get from cache!
         this.smashup = {};
-        this.smashup.factions = this.smashup.factions || this._loadAllFactions();
-        this.smashup.availableFactions = this.smashup.availableFactions || this._loadAllFactions()
-        this.smashup.selectedFactions = this.smashup.selectedFactions || this._loadDefaultFactions();
+        this.smashup.factions = this.smashup.factions || this._loadAllFactions(true); 
       }
 
-      _loadAllFactions() {
+      _loadAllFactions(isAvailable) {
         var factions = [];
 
-        factions.push({name: 'Aliens', image: 'aliens', set: 'core'});
-        factions.push({name: 'Dinosaurs', image: 'dinosaurs', set: 'core'});
-        factions.push({name: 'Ninjas', image: 'ninjas', set: 'core'});
-        factions.push({name: 'Pirates', image: 'pirates', set: 'core'});
-        factions.push({name: 'Robots', image: 'robots', set: 'core'});
-        factions.push({name: 'Tricksters', image: 'tricksters', set: 'core'});
-        factions.push({name: 'Wizards', image: 'wizards', set: 'core'});
-        factions.push({name: 'Zombies', image: 'zombies', set: 'core'});
+        factions.push({name: 'Aliens', image: 'aliens', set: 'core', selected: isAvailable});
+        factions.push({name: 'Dinosaurs', image: 'dinosaurs', set: 'core', selected: isAvailable});
+        factions.push({name: 'Ninjas', image: 'ninjas', set: 'core', selected: isAvailable});
+        factions.push({name: 'Pirates', image: 'pirates', set: 'core', selected: isAvailable});
+        factions.push({name: 'Robots', image: 'robots', set: 'core', selected: isAvailable});
+        factions.push({name: 'Tricksters', image: 'tricksters', set: 'core', selected: isAvailable});
+        factions.push({name: 'Wizards', image: 'wizards', set: 'core', selected: isAvailable});
+        factions.push({name: 'Zombies', image: 'zombies', set: 'core', selected: isAvailable});
 
-        factions.push({name: 'Bear Cavalry', image: 'bear_cavalry', set: 'awesome-level-9000'});
-        factions.push({name: 'Ghosts', image: 'ghosts', set: 'awesome-level-9000'});
-        factions.push({name: 'Killer Plants', image: 'killer_plants', set: 'awesome-level-9000'});
-        factions.push({name: 'Steampunks', image: 'steampunk', set: 'awesome-level-9000'});
+        factions.push({name: 'Bear Cavalry', image: 'bear_cavalry', set: 'awesome_level_9000', selected: isAvailable});
+        factions.push({name: 'Ghosts', image: 'ghosts', set: 'awesome_level_9000', selected: isAvailable});
+        factions.push({name: 'Killer Plants', image: 'killer_plants', set: 'awesome_level_9000', selected: isAvailable});
+        factions.push({name: 'Steampunks', image: 'steampunk', set: 'awesome_level_9000', selected: isAvailable});
 
-        factions.push({name: 'Elder Things', image: 'elder_things', set: 'obligatory-cthulhu'});
-        factions.push({name: 'Innsmouth', image: 'innsmouth', set: 'obligatory-cthulhu'});
-        factions.push({name: 'Minions of Cthulhu', image: 'minions_of_cthulhu', set: 'obligatory-cthulhu'});
-        factions.push({name: 'Miskatonic University', image: 'miskatonic_university', set: 'obligatory-cthulhu'});
+        factions.push({name: 'Elder Things', image: 'elder_things', set: 'obligatory_cthulhu', selected: isAvailable});
+        factions.push({name: 'Innsmouth', image: 'innsmouth', set: 'obligatory_cthulhu', selected: isAvailable});
+        factions.push({name: 'Minions of Cthulhu', image: 'minions_of_cthulhu', set: 'obligatory_cthulhu', selected: isAvailable});
+        factions.push({name: 'Miskatonic University', image: 'miskatonic_university', set: 'obligatory_cthulhu', selected: isAvailable});
 
-        factions.push({name: 'Cyborg Apes', image: 'cyborg_apes', set: 'science-fiction-double'});
-        factions.push({name: 'Shapeshifters', image: 'shapeshifters', set: 'science-fiction-double'});
-        factions.push({name: 'Super Spies', image: 'super_spies', set: 'science-fiction-double'});
-        factions.push({name: 'Time Travelers', image: 'time_travelers', set: 'science-fiction-double'});
+        factions.push({name: 'Cyborg Apes', image: 'cyborg_apes', set: 'science_fiction_double', selected: isAvailable});
+        factions.push({name: 'Shapeshifters', image: 'shapeshifters', set: 'science_fiction_double', selected: isAvailable});
+        factions.push({name: 'Super Spies', image: 'super_spies', set: 'science_fiction_double', selected: isAvailable});
+        factions.push({name: 'Time Travelers', image: 'time_travelers', set: 'science_fiction_double', selected: isAvailable});
         
-        factions.push({name: 'Geeks', image: 'geeks', set: 'big-geeky-box'});
+        factions.push({name: 'Geeks', image: 'geeks', set: 'big_geeky_box', selected: isAvailable});
 
-        factions.push({name: 'Giant Ants', image: 'giant_ants', set: 'monster'});
-        factions.push({name: 'Mad Scientists', image: 'mad_scientists', set: 'monster'});
-        factions.push({name: 'Vampires', image: 'vampires', set: 'monster'});
-        factions.push({name: 'Werewolves', image: 'werewolves', set: 'monster'});
+        factions.push({name: 'Giant Ants', image: 'giant_ants', set: 'monster', selected: isAvailable});
+        factions.push({name: 'Mad Scientists', image: 'mad_scientists', set: 'monster', selected: isAvailable});
+        factions.push({name: 'Vampires', image: 'vampires', set: 'monster', selected: isAvailable});
+        factions.push({name: 'Werewolves', image: 'werewolves', set: 'monster', selected: isAvailable});
         
-        factions.push({name: 'Fairies', image: 'fairies', set: 'pretty-pretty'});
-        factions.push({name: 'Kitty Cats', image: 'kitty_cats', set: 'pretty-pretty'});
-        factions.push({name: 'Mythic Horses', image: 'mythic_horses', set: 'pretty-pretty'});
-        factions.push({name: 'Princesses', image: 'princesses', set: 'pretty-pretty'});
+        factions.push({name: 'Fairies', image: 'fairies', set: 'pretty_pretty', selected: isAvailable});
+        factions.push({name: 'Kitty Cats', image: 'kitty_cats', set: 'pretty_pretty', selected: isAvailable});
+        factions.push({name: 'Mythic Horses', image: 'mythic_horses', set: 'pretty_pretty', selected: isAvailable});
+        factions.push({name: 'Princesses', image: 'princesses', set: 'pretty_pretty', selected: isAvailable});
         
-        factions.push({name: 'Clerics', image: 'clerics', set: 'munchkin'});
-        factions.push({name: 'Dwarves', image: 'dwarves', set: 'munchkin'});
-        factions.push({name: 'Elves', image: 'elves', set: 'munchkin'});
-        factions.push({name: 'Halflings', image: 'halflings', set: 'munchkin'});
-        factions.push({name: 'Mages', image: 'mages', set: 'munchkin'});
-        factions.push({name: 'Orcs', image: 'orcs', set: 'munchkin'});
-        factions.push({name: 'Thieves', image: 'thieves', set: 'munchkin'});
-        factions.push({name: 'Warriors', image: 'warriors', set: 'munchkin'});
+        factions.push({name: 'Clerics', image: 'clerics', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Dwarves', image: 'dwarves', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Elves', image: 'elves', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Halflings', image: 'halflings', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Mages', image: 'mages', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Orcs', image: 'orcs', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Thieves', image: 'thieves', set: 'munchkin', selected: isAvailable});
+        factions.push({name: 'Warriors', image: 'warriors', set: 'munchkin', selected: isAvailable});
 
-        factions.push({name: 'Dragons', image: 'dragons', set: 'its-your-fault'});
-        factions.push({name: 'Mythic Greeks', image: 'mythic_greeks', set: 'its-your-fault'});
-        factions.push({name: 'Sharks', image: 'sharks', set: 'its-your-fault'});
-        factions.push({name: 'Superheroes', image: 'superheroes', set: 'its-your-fault'});
-        factions.push({name: 'Tornados', image: 'tornados', set: 'its-your-fault'});
+        factions.push({name: 'Dragons', image: 'dragons', set: 'its_your_fault', selected: isAvailable});
+        factions.push({name: 'Mythic Greeks', image: 'mythic_greeks', set: 'its_your_fault', selected: isAvailable});
+        factions.push({name: 'Sharks', image: 'sharks', set: 'its_your_fault', selected: isAvailable});
+        factions.push({name: 'Superheroes', image: 'superheroes', set: 'its_your_fault', selected: isAvailable});
+        factions.push({name: 'Tornados', image: 'tornados', set: 'its_your_fault', selected: isAvailable});
 
-        factions.push({name: 'Astroknights', image: 'astro_knights', set: 'cease-and-desist'});
-        factions.push({name: 'Changerbots', image: 'changerbots', set: 'cease-and-desist'});
-        factions.push({name: 'Ignobles', image: 'ignobles', set: 'cease-and-desist'});
-        factions.push({name: 'Star Roamers', image: 'star_roamers', set: 'cease-and-desist'});
+        factions.push({name: 'Astroknights', image: 'astro_knights', set: 'cease_and_desist', selected: isAvailable});
+        factions.push({name: 'Changerbots', image: 'changerbots', set: 'cease_and_desist', selected: isAvailable});
+        factions.push({name: 'Ignobles', image: 'ignobles', set: 'cease_and_desist', selected: isAvailable});
+        factions.push({name: 'Star Roamers', image: 'star_roamers', set: 'cease_and_desist', selected: isAvailable});
 
-        factions.push({name: 'Explorers', image: 'explorers', set: 'what-were-we-thinking'});
-        factions.push({name: 'Grannies', image: 'grannies', set: 'what-were-we-thinking'});
-        factions.push({name: 'Rock Stars', image: 'rock_stars', set: 'what-were-we-thinking'});
-        factions.push({name: 'Teddy Bears', image: 'teddy_bears', set: 'what-were-we-thinking'});
+        factions.push({name: 'Explorers', image: 'explorers', set: 'what_were_we_thinking', selected: isAvailable});
+        factions.push({name: 'Grannies', image: 'grannies', set: 'what_were_we_thinking', selected: isAvailable});
+        factions.push({name: 'Rock Stars', image: 'rock_stars', set: 'what_were_we_thinking', selected: isAvailable});
+        factions.push({name: 'Teddy Bears', image: 'teddy_bears', set: 'what_were_we_thinking', selected: isAvailable});
 
 
         return factions;

@@ -22,7 +22,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      {{factions}}
+      <template is="dom-repeat" items="{{factions}}">
+        <div>
+          <input type="checkbox" checked="{{item.selected}}">
+          <span>{{item.name}}</span>
+        </div>
+      </template>
     </div>
   </template>
 
@@ -33,16 +38,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get properties() {
         return {
           factions: {
-            type: Array
-          },
-          availableFactions: {
-            type: Array
-          },
-          selectedFactions: {
-            type: Array
-          },
+            type: Array,
+            observer: '_factionListUpdated'
+          }
         };
-      } 
+      }
+
+      _factionListUpdated(newValue) {
+        console.log('changed!');
+      }
     }
 
     window.customElements.define(AppSettings.is, AppSettings);
